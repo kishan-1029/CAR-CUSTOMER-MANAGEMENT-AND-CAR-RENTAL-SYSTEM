@@ -265,6 +265,7 @@ class Controller implements Serializable {
         int count = 0;
         boolean test = false;
         System.out.print("Enter name: ");
+        @SuppressWarnings("resource")
         Scanner scan = new Scanner(System.in);
         name = scan.nextLine();
         for(Car car: allCars) {
@@ -286,6 +287,7 @@ class Controller implements Serializable {
         int count = 0;
         boolean test = false;
         System.out.print("Enter brand: ");
+        @SuppressWarnings("resource")
         Scanner scan = new Scanner(System.in);
         brand = scan.nextLine();
         for(Car car: allCars) {
@@ -443,13 +445,14 @@ class Controller implements Serializable {
         if(car == null) {
             System.out.println("Sorry no car found with license plate number: " + licensePlateNumber);
         } else {
+            @SuppressWarnings("resource")
             Scanner sc = new Scanner(System.in);
             int choice;
             System.out.println();
             System.out.println("1. Color");
             System.out.println("2. Price");
             System.out.println("3. RentPerDay");
-            System.out.println("4. LicenseNumberPlate");
+            System.out.println("4. LicensePlateNumber");
             System.out.println("5. Color and Price");
             System.out.println("6. Price and RentPerDay");
             System.out.println("7. Color and RentPerDay");
@@ -466,82 +469,123 @@ class Controller implements Serializable {
             switch (choice) {
                 case 1:
                     System.out.println();
+                    sc.nextLine();
+                    System.out.print("New Color :: ");
                     color = sc.nextLine();
                     car.setColor(color);
                     System.out.println("Successfully Updated.");
+                    break;
                 case 2:
                     System.out.println();
+                    System.out.print("New Price :: ");
                     costPrice = sc.nextInt();
                     sc.nextLine();
                     car.setCostPrice(costPrice);
                     System.out.println("Successfully Updated.");
+                    break;
                 case 3:
                     System.out.println();
+                    System.out.print("New Rent Price Per Day :: ");
                     rentPricePerDay = sc.nextInt();
                     sc.nextLine();
                     car.setRentPricePerDay(rentPricePerDay);
                     System.out.println("Successfully Updated.");
+                    break;
                 case 4:
                     System.out.println();
+                    sc.nextLine();
+                    System.out.print("New Number Plate :: ");
                     numberPlate = sc.nextLine();
                     car.setNumberPlate(numberPlate);
                     System.out.println("Successfully Updated.");
+                    break;
                 case 5:
                     System.out.println();
+                    sc.nextLine();
+                    System.out.print("New Color :: ");
                     color = sc.nextLine();
+                    System.out.print("New Price :: ");
                     costPrice = sc.nextInt();
                     sc.nextLine();
                     car.setCostPrice(costPrice);
                     car.setColor(color);
                     System.out.println("Successfully Updated.");
+                    break;
                 case 6:
                     System.out.println();
+                    System.out.print("New Price :: ");
                     costPrice = sc.nextInt();
                     sc.nextLine();
+                    System.out.print("New Rent Price Per Day :: ");
                     rentPricePerDay = sc.nextInt();
                     sc.nextLine();
                     car.setCostPrice(costPrice);
                     car.setRentPricePerDay(rentPricePerDay);
                     System.out.println("Successfully Updated.");
+                    break;
                 case 7:
                     System.out.println();
+                    sc.nextLine();
+                    System.out.print("New Color :: ");
                     color = sc.nextLine();
+                    System.out.print("New Rent Price Per Day :: ");
                     rentPricePerDay = sc.nextInt();
                     sc.nextLine();
                     car.setColor(color);
                     car.setRentPricePerDay(rentPricePerDay);
                     System.out.println("Successfully Updated.");
+                    break;
                 case 8:
                     System.out.println();
-                    color = sc.nextLine();
+                    sc.nextLine();
+                    System.out.print("New Color :: ");
+                    color =sc.nextLine();
+                    System.out.print("New Number Plate :: ");
                     licensePlateNumber = sc.nextLine();
                     car.setColor(color);
+                    sc.nextLine();
                     car.setNumberPlate(licensePlateNumber);
                     System.out.println("Successfully Updated.");
+                    break;
                 case 9:
                     System.out.println();
-                    licensePlateNumber = sc.nextLine();
-                    rentPricePerDay = sc.nextInt();
                     sc.nextLine();
+                    System.out.print("New Number Plate :: ");
+                    licensePlateNumber = sc.nextLine();
+                    System.out.print("New Rent Price Per Day :: ");
+                    rentPricePerDay = sc.nextInt();
                     car.setNumberPlate(licensePlateNumber);
                     car.setRentPricePerDay(rentPricePerDay);
                     System.out.println("Successfully Updated.");
+                    break;
                 case 10:
                     System.out.println();
+                    sc.nextLine();
+                    System.out.print("New Color :: ");
                     color = sc.nextLine();
+                    // sc.nextLine();
+                    System.out.print("New Rent Price Per Day :: ");
                     rentPricePerDay = sc.nextInt();
                     sc.nextLine();
+                    System.out.print("New Number Plate :: ");
                     licensePlateNumber = sc.nextLine();
+                    // sc.nextLine();
                     car.setColor(color);
                     car.setRentPricePerDay(rentPricePerDay);
                     car.setNumberPlate(licensePlateNumber);
                     System.out.println("Successfully Updated.");
+                    break;
                 case 11:
                     System.out.println();
+                    sc.nextLine();
+                    System.out.print("New Color :: ");
                     color = sc.nextLine();
+                    System.out.print("New Rent Price Per Day :: ");
                     rentPricePerDay = sc.nextInt();
                     sc.nextLine();
+                    System.out.print("New Number Plate :: ");
                     licensePlateNumber = sc.nextLine();
+                    System.out.print("New Price :: ");
                     costPrice = sc.nextInt();
                     sc.nextLine();
                     car.setCostPrice(costPrice);
@@ -549,7 +593,10 @@ class Controller implements Serializable {
                     car.setRentPricePerDay(rentPricePerDay);
                     car.setNumberPlate(licensePlateNumber);
                     System.out.println("Successfully Updated.");
-                default: System.out.println("Sorry Invalid Input...");
+                    break;
+                default:
+                    System.out.println("Sorry Invalid Input...");
+                    break;
             }
         }
     }
@@ -614,8 +661,9 @@ class Controller implements Serializable {
 
 
 
+}
 
-public class Main {
+public class main1{
     public static void main(String[] args) {
 
           Controller controller = new Controller();
@@ -796,5 +844,4 @@ public class Main {
             }
         } while(option != 0);
     }
-}
 }
